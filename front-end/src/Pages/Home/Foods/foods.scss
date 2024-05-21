@@ -1,0 +1,25 @@
+.myFoods{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 40px;
+    .food{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: white;
+        .redbut{
+            color: red;
+            padding: 5px;
+            border :1px solid white;
+            width: 80px;
+            background-color: rgba(255, 255, 255, 0);
+        }
+        .whitebut{
+            color: white;
+            width: 80px;
+            padding: 5px;
+            border :1px solid white;
+            background-color: rgba(255, 255, 255, 0);
+        }
+    }
+}
