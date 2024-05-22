@@ -25,11 +25,35 @@ export const foodSlice = createSlice({
             }
         },
         setBasket:(state, action) => {
-            
+            const elemIndex = state.basket.findIndex(elem=>elem._id === action.payload._id)
+            if(elemIndex===-1){
+                state.basket = [...state.basket,{...action.payload,count:1}]
+                localStorage.setItem('basket',JSON.stringify([...state.basket]))
+            }else{
+                state.basket[elemIndex].count++
+                localStorage.setItem('basket',JSON.stringify([...state.basket]))
+            }
+        },
+        removeBasket:(state, action) => {
+            state.basket = state.basket.filter(elem=>elem._id !== action.payload._id)
+            localStorage.setItem("basket",JSON.stringify([...state.basket]))
+        },
+        incBasket:(state, action) => {
+            const elemIndex = state.basket.findIndex(elem=>elem._id === action.payload._id)
+            state.basket[elemIndex].count++
+            localStorage.setItem("basket",JSON.stringify([...state.basket]))
+        },
+        decBasket:(state, action) => {
+            const elemIndex = state.basket.findIndex(elem=>elem._id === action.payload._id)
+            state.basket[elemIndex].count--
+            if(state.basket[elemIndex].count<=0){
+                state.basket = state.basket.filter(elem=>elem._id !==action.payload._id)
+            }
+            localStorage.setItem("basket",JSON.stringify([...state.basket]))
         }
     },
 })
 
-export const { setFood, setFav } = foodSlice.actions
+export const { setFood, setFav,setBasket,removeBasket,incBasket,decBasket } = foodSlice.actions
 
 export default foodSlice.reducer

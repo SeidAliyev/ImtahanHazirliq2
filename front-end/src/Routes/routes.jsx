@@ -1,6 +1,7 @@
 import AdminRoot from "../Layout/AdminRoot";
 import UserRoot from "../Layout/UserRoot";
 import Add from "../Pages/Add";
+import Basket from "../Pages/Basket";
 import Favorite from "../Pages/Favorite";
 import Home from "../Pages/Home";
 
@@ -16,6 +17,10 @@ const routes =[
             {
                 path: "/favorite",
                 element: <Favorite/>,
+            },
+            {
+                path: "/basket",
+                element: <Basket/>,
             },
         ]
     }, 
